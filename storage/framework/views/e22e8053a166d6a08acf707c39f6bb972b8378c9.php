@@ -60,8 +60,9 @@ use App\Answer;
                                 </td>
                                 <td>
                                     <?php
-                                        $user = DB::table('answers')->where('id_question',$question->id)->first();
-                                        if ($user === null) 
+                                        //Check if this question was already answered
+                                        $answered = DB::table('answers')->where('id_question',$question->id)->first();
+                                        if ($answered === null) 
                                         {
                                     ?>
                                             <a href="questionnaire/<?php echo e($question->id); ?>/edit" class="btn btn-default btn-sm">Edit</button>
